@@ -5,14 +5,14 @@ This is the find single number from string
 import sys
 
 
-def _getInput():
+def _getInput(lenLimit):
     '''
     The getInput function will get the user input
     '''
     inputString = input('Please enter English(only) string : ')
 
     try:
-        if inputString.isalpha():
+        if inputString.isalpha() & (len(inputString) < lenLimit ):
             return inputString
         else:
             raise ValueError
@@ -83,7 +83,7 @@ def main():
     '''
     while True:
         try:
-            inputString = _getInput()
+            inputString = _getInput(100)
         except:
             sys.exit(-1)
 
