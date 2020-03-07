@@ -21,7 +21,7 @@ def _getInput(lenLimit):
         raise ValueError
 
 
-def _findSingle(inputString):
+def findSingle(inputString):
     '''
     The findSingle function will find the single charector
     by the User input
@@ -51,7 +51,7 @@ def _findSingle(inputString):
     return 'This input no answer !'
 
 
-def _findSingle_by52(inputString):
+def findSingle_by52(inputString):
     '''
     The _findSing_by52 is the second approach to find the single charector
     o(n)
@@ -87,7 +87,7 @@ def main():
         except:
             sys.exit(-1)
 
-        ans = _findSingle_by52(inputString)
+        ans = findSingle_by52(inputString)
 
         if len(ans) == 1:
             print('The single charector is : ', ans)
