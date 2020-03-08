@@ -1,11 +1,11 @@
 import pytest
-import caesar as caesar
+import caesar
 
 
 class testingData:
     encryptLigalTestData = [
         ('e', 'apple', 5, 'fuuqj'),
-        ('e', 'xyz', 5, 'ecd'),
+        ('e', 'zxy', 5, 'ecd'),
         ('d', 'ecde', 5, 'zxyz')
     ]
 
