@@ -1,3 +1,6 @@
+'''
+implement caesar cipher system
+'''
 import sys
 
 
@@ -12,7 +15,7 @@ def _caecerEncrypt(words, shift):
 
     print('\nThe encrypt result is : ' + ciper + '\n')
 
-    # return ciper
+    return ciper
 
 
 def _caecerDecrypt(words, shift):
@@ -26,7 +29,14 @@ def _caecerDecrypt(words, shift):
 
     print('\nThe decrypt result is : ' + plaintext + '\n')
 
-    # return plaintext
+    return plaintext
+
+
+def caesarCipher(operation, words, shift):
+    if operation == 'e':
+        return _caecerEncrypt(words, shift)
+    elif operation == 'd':
+        return _caecerDecrypt(words, shift)
 
 
 def _getInput():
@@ -70,14 +80,11 @@ def main():
     '''
     while True:
         try:
-            opration, words, shift = _getInput()
+            operation, words, shift = _getInput()
         except:
             sys.exit(-1)
 
-        if opration == 'e':
-            _caecerEncrypt(words, shift)
-        elif opration == 'd':
-            _caecerDecrypt(words, shift)
+        caesarCipher(operation, words, shift)
 
 
 if __name__ == "__main__":

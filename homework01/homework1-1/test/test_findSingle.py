@@ -1,5 +1,5 @@
 import pytest
-import app.findSingle as findSingle
+import findSingle as findSingle
 
 
 class testingData:
