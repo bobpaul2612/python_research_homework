@@ -1,5 +1,5 @@
 import pytest
-import caesar
+import caesar as caesar
 
 
 class testingData:
