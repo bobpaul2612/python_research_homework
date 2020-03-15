@@ -3,45 +3,56 @@ implement caesar cipher system
 '''
 import sys
 
-
-def _caecerEncrypt(words, shift):
-    '''
-    The function _caecerEncrypt execute caesar cipher encryption
-    '''
-    ciper = ''
-
-    for i in words:
-        ciper += chr((ord(i) - ord('a') + shift) % 26 + ord('a'))
-
-    print('\nThe encrypt result is : ' + ciper + '\n')
-
-    return ciper
+a_ascii = ord('a')
+A_ascii = ord('A')
+alpha_num = 26
 
 
-def _caecerDecrypt(words, shift):
-    '''
-    The function _caecerDecrypt execute cassar cipher decrytion
-    '''
-    plaintext = ''
+def caesar_system(words, shift):
+    def _caesar_operation(letter):
+        if not letter.isalpha():
+            return letter
+        if letter.islower():
+            this_ascii = a_ascii
+        else:
+            this_ascii = A_ascii
 
-    for i in words:
-        plaintext += chr((ord(i) - ord('a') - shift) % 26 + ord('a'))
+        letter_index = ord(letter) - this_ascii
+        trans_letter_index = (letter_index + shift) % alpha_num
+        new_letter = chr(trans_letter_index + this_ascii)
+        return new_letter
 
-    print('\nThe decrypt result is : ' + plaintext + '\n')
+    trans_words_map = map(_caesar_operation, words)
 
-    return plaintext
+    return ''.join(list(trans_words_map))
 
 
-def caesarCipher(operation, words, shift):
+def _caesar_input_check(operation, words, shift):
+    if operation != 'e' and operation != 'd':
+        return False
+    elif not (words.replace(' ', '').isalpha()):
+        return False
+    elif not (isinstance(shift, int)):
+        return False
+    return True
+
+
+def caesar_cipher(operation, words, shift):
+
+    operation = operation.lower()
+
+    if not _caesar_input_check(operation, words, shift):
+        return -1
+
     if operation == 'e':
-        return _caecerEncrypt(words, shift)
+        return caesar_system(words, shift)
     elif operation == 'd':
-        return _caecerDecrypt(words, shift)
+        return caesar_system(words, -shift)
 
 
-def _getInput():
+def _get_input():
     '''
-    The _getInput function will get user input
+    The _get_input function will get user input
     operation : the encryption / decryption operation
     words : you want to e/d's words
     shift : shift alpha
@@ -80,11 +91,12 @@ def main():
     '''
     while True:
         try:
-            operation, words, shift = _getInput()
+            operation, words, shift = _get_input()
         except:
             sys.exit(-1)
 
-        caesarCipher(operation, words, shift)
+        result = caesar_cipher(operation, words, shift)
+        print(result)
 
 
 if __name__ == "__main__":
