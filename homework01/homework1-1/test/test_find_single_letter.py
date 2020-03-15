@@ -5,6 +5,7 @@ import find_single_letter
 class testing_data:
     ligal_test_data = [
         # alpha_str , expected
+        ('ppp', 'p'),
         ('aabcc', 'b'),
         ('aabbcddee', 'c'),
         ('xjieiaajx', 'e'),

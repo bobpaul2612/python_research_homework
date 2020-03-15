@@ -6,6 +6,7 @@ import sys
 
 len_limit = 100
 
+
 def _get_input():
     '''
     The getInput function will get the user input
@@ -13,7 +14,7 @@ def _get_input():
     alpha_str = input('Please enter English(only) string : ')
 
     try:
-        if alpha_str.isalpha() & (len(alpha_str) < len_limit ):
+        if alpha_str.isalpha() & (len(alpha_str) < len_limit):
             return alpha_str
         else:
             raise ValueError
@@ -29,10 +30,11 @@ def find_single_letter(alpha_str):
 
     return the single charector
     '''
-    if (not alpha_str.isalpha()) or len(alpha_str) >= 100 :
+    if (not alpha_str.isalpha()) or len(alpha_str) >= 100:
         return 'The input format error!'
 
-    letter_list = [letter for letter in alpha_str if alpha_str.count(letter) % 2]
+    letter_list = [letter for letter in set(
+        alpha_str) if alpha_str.count(letter) % 2]
 
     if len(letter_list) > 1:
         return "More than one single letter!"
